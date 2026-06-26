@@ -72,19 +72,17 @@ body {
     margin: 100px auto 50px auto; 
 }
 
-/* Ahora los textos ocupan todo el ancho disponible del contenedor */
 .ancho-texto {
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Flexbox para dividir texto y ficha, alineado al centro verticalmente */
 .bloque-interactivo {
     display: flex;
     width: 100%;
-    align-items: center; /* Esto centra la ficha respecto al texto */
+    align-items: center; 
     margin-bottom: 24px;
-    gap: 40px; /* Separación entre el texto y la ficha */
+    gap: 40px; 
 }
 
 .texto-izquierdo {
@@ -134,7 +132,7 @@ h2 {
     font-size: 2.2rem;
     margin-top: 60px;
     margin-bottom: 25px;
-    text-align: center; /* Títulos de crónicas centrados */
+    text-align: center; 
 }
 
 h3 {
@@ -181,36 +179,29 @@ a:hover {
 }
 
 /* =========================================
-   GRÁFICOS
+   GRÁFICOS (Ajuste de tamaño reducido)
 ========================================= */
 .grafico-container {
     background-color: var(--recuadros);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
-    margin: 40px 0;
-    text-align: center;
-    width: 100%; /* Ocupa todo el margen */
+    margin: 40px auto; /* Centrado automático */
+    max-width: 900px;  /* Reducción del ancho máximo para que no sea gigante */
+    width: 95%;        /* Adaptable en móviles */
     box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.grafico-container img {
-    width: 100%;
-    height: auto;
-    border-bottom: 5px solid var(--datos-verde);
-    border-radius: 4px;
-    display: block;
-}
-
-/* Ajustes para evitar barras de desplazamiento en Vega-Lite */
 .vega-embed {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
+/* Forzar que el canvas sea responsivo */
 .vega-embed canvas {
-    max-width: 100%;
-    height: auto;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 .epigrafe {

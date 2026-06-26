@@ -51,16 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Si el usuario scrollea hacia ABAJO (y no está en el tope de la página)
         if (scrollTop > lastScrollTop && scrollTop > 150) {
-            navbar.style.transform = 'translateY(-100%)'; // Oculta el menú superior
+            navbar.style.transform = 'translateY(-100%)'; 
         } 
-        // Si el usuario scrollea hacia ARRIBA
         else if (scrollTop < lastScrollTop) {
-            navbar.style.transform = 'translateY(0)';     // Muestra el menú superior
+            navbar.style.transform = 'translateY(0)';     
         }
         
-        // Prevención: Si está arriba del todo, asegura el estado inicial
         if (scrollTop <= 50) {
             navbar.style.transform = 'translateY(0)';
         }
