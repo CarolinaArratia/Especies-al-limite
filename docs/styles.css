@@ -2,11 +2,11 @@
 :root {
     --fondo: #FBF8F0;
     --texto: #1F3D5B;
-    --titulos: #6A4C93;
+    --titulos: #91532B;
     --enlaces: #0695D1;
     --datos-verde: #529E47;
     --interfaz: #187670;
-    --destacado-burgundy: #D10074;
+    --destacado-burgundy: #86223E;
     --recuadros: #EFEDA0;
     --fuente-titulos: 'Capriola', sans-serif;
     --fuente-cuerpo: 'Lora', serif;
@@ -85,7 +85,7 @@ body {
     margin-bottom: 24px;
 }
 
-/* Ajuste: 50% para el texto y 50% para la ficha */
+/* Proporción 50/50 para que la ficha destaque correctamente */
 .texto-izquierdo {
     width: 50%;
     padding-right: 40px;
@@ -149,7 +149,7 @@ h3 {
     margin-top: 20px;
 }
 
-/* Ajuste: Ancho al 100% */
+/* Línea roja divisoria ocupando el ancho completo */
 .linea-divisoria {
     border: 0;
     height: 3px;
@@ -189,6 +189,7 @@ a:hover {
     border-radius: 12px;
     margin: 40px 0;
     text-align: center;
+    overflow-x: auto;
 }
 
 .grafico-container img {
@@ -199,7 +200,6 @@ a:hover {
     display: block;
 }
 
-/* Reglas añadidas para asegurar que los gráficos de Vega se vean bien */
 .vega-embed {
     width: 100%;
     display: flex;
@@ -234,6 +234,7 @@ a:hover {
     margin-bottom: 15px;
     border-bottom: 1px solid var(--interfaz);
     padding-bottom: 5px;
+    text-transform: uppercase;
 }
 
 .slider-contenedor {
