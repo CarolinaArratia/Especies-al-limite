@@ -1,1 +1,153 @@
-<link rel="stylesheet" href="styles.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Especies al Límite</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilogaleria.css">
+</head>
+<body>
+
+    <nav class="navbar" id="menu-superior">
+        <div class="logo-nav">ESPECIES AL LÍMITE</div>
+        <div class="enlaces">
+            <a href="index.html">Crónicas</a>
+            <a href="visualizaciones.html" target="_blank">Visualizaciones</a>
+            <a href="diccionario.html" target="_blank">Diccionario</a>
+        </div>
+    </nav>
+
+    <div class="contenedor-central">
+        
+        <header class="header-galeria">
+            <h1>El Muro de la Invisibilidad</h1>
+            <hr class="linea-divisoria">
+        </header>
+
+        <div class="guia-borrachito-galeria animar-seccion">
+            <img src="borrachito.png" alt="Borrachito Guía Turístico" class="img-borrachito-guia">
+            <p class="mensaje-borrachito">"¡Hola! Soy Borrachito, tu guía turístico. Estas especies están ocultas en el espacio digital. Selecciona una categoría y pasa tu cursor sobre las sombras para romper la asfixia mediática y darles visibilidad."</p>
+        </div>
+
+        <div class="filtros-galeria animar-seccion" id="contenedor-filtros">
+            <button class="btn-filtro activo" data-filtro="todos">Ver Todas</button>
+            <button class="btn-filtro" data-filtro="cr">En Peligro Crítico (CR)</button>
+            <button class="btn-filtro" data-filtro="en">En Peligro (EN)</button>
+            <button class="btn-filtro" data-filtro="anfibio">Anfibios</button>
+            <button class="btn-filtro" data-filtro="ave">Aves</button>
+            <button class="btn-filtro" data-filtro="insecto">Insectos</button>
+            <button class="btn-filtro" data-filtro="mamifero">Mamíferos</button>
+        </div>
+
+        <div class="grid-galeria" id="muro-especies">
+            
+            <div class="tarjeta-especie animar-seccion" data-categoria="cr insecto">
+                <img src="borrachito_real.jpeg" alt="Borrachito" class="img-especie">
+                <div class="info-especie">
+                    <h3>Borrachito</h3>
+                    <p>Sclerostomulus nitidus</p>
+                    <span class="etiqueta-riesgo cr">En Peligro Crítico (CR)</span>
+                </div>
+            </div>
+
+            <div class="tarjeta-especie animar-seccion" data-categoria="cr anfibio">
+                <img src="ranita_darwin_real.jpeg" alt="Ranita de Darwin del Norte" class="img-especie">
+                <div class="info-especie">
+                    <h3>Ranita de Darwin del Norte</h3>
+                    <p>Rhinoderma rufum</p>
+                    <span class="etiqueta-riesgo cr">En Peligro Crítico (CR)</span>
+                </div>
+            </div>
+
+            <div class="tarjeta-especie animar-seccion" data-categoria="en ave">
+                <img src="pinguino_humboldt_real.jpeg" alt="Pingüino de Humboldt" class="img-especie">
+                <div class="info-especie">
+                    <h3>Pingüino de Humboldt</h3>
+                    <p>Spheniscus humboldti</p>
+                    <span class="etiqueta-riesgo en">En Peligro (EN)</span>
+                </div>
+            </div>
+
+            <div class="tarjeta-especie animar-seccion" data-categoria="en mamifero">
+                <img src="chinchilla_costina_real.jpeg" alt="Chinchilla Costina" class="img-especie">
+                <div class="info-especie">
+                    <h3>Chinchilla Costina</h3>
+                    <p>Chinchilla lanigera</p>
+                    <span class="etiqueta-riesgo en">En Peligro (EN)</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="ancho-texto" style="margin: 0 auto;">
+        <p>Reportaje de Periodismo de Datos y Visualización | Proyecto: Especies al Límite</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Animaciones ScrollReveal (suaves)
+            ScrollReveal().reveal('.animar-seccion', { 
+                delay: 200, 
+                distance: '30px', 
+                duration: 1000, 
+                easing: 'ease-in-out',
+                origin: 'bottom'
+            });
+
+            // 2. Comportamiento del Navbar al Scrollear
+            let lastScrollTop = 0;
+            const navbar = document.getElementById('menu-superior');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 150) {
+                    navbar.style.transform = 'translateY(-100%)'; 
+                } else if (scrollTop < lastScrollTop) {
+                    navbar.style.transform = 'translateY(0)';     
+                }
+                if (scrollTop <= 50) {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 3. Lógica de Filtros del Muro de Especies
+            const botonesFiltro = document.querySelectorAll('.btn-filtro');
+            const tarjetasEspecie = document.querySelectorAll('.tarjeta-especie');
+
+            if (botonesFiltro.length > 0) {
+                botonesFiltro.forEach(boton => {
+                    boton.addEventListener('click', () => {
+                        
+                        // Actualizar estilo de botones
+                        botonesFiltro.forEach(b => b.classList.remove('activo'));
+                        boton.classList.add('activo');
+
+                        const filtro = boton.getAttribute('data-filtro');
+
+                        // Filtrar tarjetas
+                        tarjetasEspecie.forEach(tarjeta => {
+                            const categorias = tarjeta.getAttribute('data-categoria');
+                            
+                            if (filtro === 'todos' || categorias.includes(filtro)) {
+                                tarjeta.classList.remove('oculto');
+                            } else {
+                                tarjeta.classList.add('oculto');
+                            }
+                        });
+                    });
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
