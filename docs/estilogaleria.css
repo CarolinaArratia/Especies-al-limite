@@ -1,0 +1,148 @@
+/* =========================================
+   GALERÍA: MURO DE LA INVISIBILIDAD + FILTROS
+========================================= */
+
+.header-galeria {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.guia-borrachito-galeria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--recuadros);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 2px dashed var(--titulos);
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+}
+
+.mensaje-borrachito {
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.15rem;
+    color: var(--texto);
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+}
+
+.filtros-galeria {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.btn-filtro {
+    background-color: transparent;
+    color: var(--texto);
+    border: 2px solid var(--interfaz);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro.activo, .btn-filtro:hover {
+    background-color: var(--interfaz);
+    color: white;
+}
+
+/* Grilla adaptable (Masonry-lite) */
+.grid-galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.tarjeta-especie {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #E8E5DC;
+    border: 2px solid transparent;
+    transition: 0.4s ease;
+    aspect-ratio: 4/5; 
+    cursor: crosshair; 
+}
+
+.tarjeta-especie:hover {
+    border-color: var(--datos-verde);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.img-especie {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Efecto Muro de la invisibilidad: Lo oscurece y le da un tono azulado */
+    filter: grayscale(100%) brightness(0.2) sepia(1) hue-rotate(180deg) saturate(2);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Revelar al pasar el mouse */
+.tarjeta-especie:hover .img-especie {
+    filter: grayscale(0%) brightness(1) sepia(0) hue-rotate(0) saturate(1);
+    transform: scale(1.05);
+}
+
+.info-especie {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(31, 61, 91, 0.95), transparent);
+    color: white;
+    padding: 40px 20px 20px 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.tarjeta-especie:hover .info-especie {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-especie h3 {
+    color: var(--recuadros);
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    text-align: left;
+    font-family: var(--fuente-titulos);
+}
+
+.info-especie p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-family: var(--fuente-cuerpo);
+    font-style: italic;
+    text-align: left;
+}
+
+.etiqueta-riesgo {
+    display: inline-block;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: var(--fuente-titulos);
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.cr { background-color: var(--destacado-burgundy); } /* En Peligro Crítico */
+.en { background-color: var(--titulos); } /* En Peligro */
+
+/* Clase para ocultar tarjetas mediante los filtros JS */
+.oculto {
+    display: none !important;
+}
