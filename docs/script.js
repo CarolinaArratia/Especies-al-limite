@@ -15,30 +15,32 @@ document.addEventListener("DOMContentLoaded", function() {
         delay: 300, 
         distance: '20px', 
         duration: 1000, 
-        origin: 'left'
+        origin: 'bottom'
+    });
+
+    ScrollReveal().reveal('.ficha-centrada', { 
+        delay: 300, 
+        distance: '20px', 
+        duration: 800, 
+        origin: 'bottom'
     });
 
     // ==========================================
     // 2. FICHAS INTERACTIVAS (Acordeón)
     // ==========================================
-    // Seleccionamos todos los botones de acordeón
     var acordeones = document.querySelectorAll(".acordeon-btn");
 
     acordeones.forEach(function(btn) {
         btn.addEventListener("click", function() {
-            // Alterna la clase 'active' para cambiar el color del botón
             this.classList.toggle("active");
             
-            // Selecciona el panel que está inmediatamente después del botón
             var panel = this.nextElementSibling;
             var icono = this.querySelector('.icono-acordeon');
             
-            // Si el panel está abierto (tiene max-height), lo cerramos
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
                 icono.textContent = '+';
             } else {
-                // Si está cerrado, le damos de max-height el tamaño de su contenido
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 icono.textContent = '-';
             }
@@ -46,29 +48,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // ==========================================
-    // 3. MENÚ CONTRAÍBLE (SCROLL)
+    // 3. MENÚ SUPERIOR CONTRAÍBLE AL SCROLLEAR
     // ==========================================
-    let lastScrollTop = 0;
     const navbar = document.getElementById('menu-superior');
 
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Si el usuario scrollea hacia ABAJO
-        if (scrollTop > lastScrollTop && scrollTop > 150) {
-            navbar.style.transform = 'translateY(-100%)'; 
-        } 
-        // Si el usuario scrollea hacia ARRIBA
-        else if (scrollTop < lastScrollTop) {
-            navbar.style.transform = 'translateY(0)';     
+        // Si el usuario baja más de 80px, la barra se contrae
+        if (scrollTop > 80) {
+            navbar.classList.add('contraida');
+        } else {
+            // Si sube al tope, la barra vuelve a su tamaño normal
+            navbar.classList.remove('contraida');
         }
-        
-        // Asegurar que arriba de todo siempre se vea el menú
-        if (scrollTop <= 50) {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
     });
 
 });
