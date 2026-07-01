@@ -1,230 +1,459 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Especies al Límite | Webstory</title>
+
     
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     
+
     <script src="https://unpkg.com/scrollreveal"></script>
 
+
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
+
+
     <link rel="stylesheet" href="style.css">
+
     
+
     <style>
+
       /* Estilos específicos para los gráficos de Vega */
+
       .vega-embed-container {
+
         width: 100%;
+
         display: flex;
+
         justify-content: center;
+
         background-color: var(--recuadros);
+
         padding: 20px;
+
         border-radius: 12px;
+
         border-bottom: 5px solid var(--datos-verde);
+
         box-sizing: border-box;
+
       }
+
       .vega-embed details,
+
       .vega-embed details summary {
+
         position: relative;
+
       }
+
     </style>
+
 </head>
+
 <body class="bloqueo-scroll"> 
 
+
+
     <div id="pantalla-inicio">
+
         <div class="contenido-inicio">
+
             <img src="tu-logo-grande.png" alt="Logo Especies al Límite" class="logo-splash">
+
             <h1>ESPECIES AL LÍMITE</h1>
+
             <p>La doble extinción de la fauna chilena</p>
+
             <button id="btn-comenzar">Ingresar al Reportaje</button>
+
         </div>
+
     </div>
 
+
+
     <nav class="navbar" id="menu-superior">
+
         <div class="logo-nav">ESPECIES AL LÍMITE</div>
+
         <div class="enlaces">
+
             <a href="galeria.html" target="_blank">Galería</a>
+
             <a href="visualizaciones.html" target="_blank">Visualizaciones</a>
+
             <a href="sobre-nosotras.html" target="_blank">Sobre Nosotras</a>
+
         </div>
+
     </nav>
 
+
+
     <div class="contenedor-estrecho">
+
         
+
         <header class="header-principal">
+
             <div class="ancho-texto">
+
                 <h1>La doble extinción de la fauna chilena</h1>
+
                 <hr class="linea-divisoria">
+
                 <p class="bajada-principal">Mientras íconos como el huemul dominan nuestro imaginario, una silenciosa brecha condena a la extinción absoluta a decenas de especies que carecen de carisma mediático.</p>
+
             </div>
+
         </header>
 
+
+
         <section class="cronica-seccion animar-seccion">
+
             <div class="ancho-texto">
+
                 <h2>Regio: especies en peligro en Chile</h2>
+
                 <p>Cuando se habla de cualquier especie, no solo se hace referencia al nombre común con el que la mayoría de las personas la conoce, sino también a su raíz etimológica y a su nombre científico. En esa historia de nombres también habita una forma de entender el territorio: la palabra región, del latín <em>regio</em>, alude a una zona, un espacio, una porción de mundo que organiza la vida que contiene.</p>
+
             </div>
 
+
+
             <div class="bloque-interactivo">
+
                 <div class="texto-izquierdo">
+
                     <p>A partir de esas clasificaciones es posible acercarse a la flora y fauna de un país incluso sin una imagen; a veces, la descripción basta. <em>Sclerostomulus nitidus</em>, del griego <em>skleros</em>, que significa "duro", característico de esta criatura; del griego <em>stoma</em>, que refiere a la boca, y <em>ulus</em>, por lo pequeña que es. Por su parte, del latín <em>nitidus</em> describe aquello que es brillante y elegante, como el color negro resplandeciente de este insecto. <em>Sclerostomulus</em> se vincula comúnmente a la familia Lucanidae, escarabajos cuya mandíbula se desarrolla de forma tal que recuerda a cuernos. Su nombre común es la evidencia palpable de la forma en que se alimenta el Borrachito, quien extrae la savia fermentada de los árboles, lo que en muchas ocasiones provoca que estos caigan al suelo, como si se tratara de una verdadera persona ebria que, después de beberse varias cajas de vino tinto Gato de un litro, comienza a caminar torpemente hasta caer rendida y volver a las andadas al día siguiente.</p>
+
                 </div>
+
                 
+
                 <div class="ficha-derecha">
+
                     <button class="acordeon-btn">FICHA: EL BORRACHITO <span class="icono-acordeon">+</span></button>
+
                     <div class="acordeon-panel">
+
                         <div class="contenido-ficha">
+
                             <p><strong>[PRONTO]</strong><br>Ilustración acorde a la estética</p>
+
                             <p><strong>[PRONTO]</strong><br>Fotografía de la especie real</p>
+
                             <p><strong>[PRONTO]</strong><br>Datos Técnicos (Familia, Hábitat, etc)</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="scrolly-wrapper">
+
                 <div class="scrolly-fondo vega-embed-container">
+
                     
+
                     <div id="vis-martina"></div>
+
                     <script>
+
                       (function(vegaEmbed) {
-                        var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"gridColor": "#EFEDA0", "gridOpacity": 0.6, "labelColor": "#1F3D5B", "labelFontSize": 13, "titleColor": "#1F3D5B", "titleFontSize": 14}, "legend": {"labelColor": "#1F3D5B", "labelFontSize": 13, "symbolSize": 180, "titleFontSize": 14}, "title": {"anchor": "start", "color": "#91532B", "fontSize": 22, "offset": 20, "subtitleColor": "#1F3D5B", "subtitleFontSize": 14}}, "data": {"name": "data-403a539f6085133a54b9b0bdafd8c9de"}, "mark": {"type": "circle", "opacity": 0.9, "size": 260}, "encoding": {"color": {"field": "Grupo", "legend": {"orient": "top-right"}, "scale": {"domain": ["M\u00e1s visitadas", "Especies medi\u00e1ticas", "Menos visitadas"], "range": ["#0695D1", "#86223E", "#1F3D5B"]}, "title": "", "type": "nominal"}, "tooltip": [{"field": "Nombre Cient\u00edfico", "title": "Nombre cient\u00edfico", "type": "nominal"}, {"field": "Nombre Com\u00fan", "title": "Nombre com\u00fan", "type": "nominal"}, {"field": "Clase", "title": "Clase", "type": "nominal"}, {"field": "RCE", "title": "Categor\u00eda", "type": "nominal"}, {"field": "Total Visitas (periodo seis meses)", "title": "Visitas", "type": "quantitative"}], "x": {"field": "Total Visitas (periodo seis meses)", "title": "Total de visitas en Wikipedia (6 meses)", "type": "quantitative"}, "y": {"axis": {"labelLimit": 500}, "field": "Etiqueta", "sort": ["Pez (Gen\u00e9rico)", "Gusano Aterciopelado", "Lagartija Negro Azulada", "Liguay", "Ranita De Darwin", "Ping\u00fcino De Humboldt", "Huemul", "Lagartija De Fabi\u00e1n", "Zorro De Chilo\u00e9", "Chinchilla Costina"], "title": "", "type": "nominal"}}, "height": 450, "title": {"text": "Las especies amenazadas que s\u00ed vemos y las que ignoramos", "subtitle": ["Contraste de inter\u00e9s ciudadano y volumen de visitas digitales en Wikipedia"]}, "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-403a539f6085133a54b9b0bdafd8c9de": [{"ID": 112, "Nombre Cient\u00edfico": "Chinchilla lanigera", "Nombre Com\u00fan": "Chinchilla costina", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 9259.0, "Promedio Diario": "51", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Chinchilla_lanigera ", "Etiqueta": "Chinchilla Costina", "Grupo": "M\u00e1s visitadas"}, {"ID": 167, "Nombre Cient\u00edfico": "Lycalopex fulvipes", "Nombre Com\u00fan": "Zorro de Chilo\u00e9", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 2152.0, "Promedio Diario": "12", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Lycalopex_fulvipes ", "Etiqueta": "Zorro De Chilo\u00e9", "Grupo": "M\u00e1s visitadas"}, {"ID": 154, "Nombre Cient\u00edfico": "Liolaemus fabiani", "Nombre Com\u00fan": "Lagartija de Fabi\u00e1n", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 1311.0, "Promedio Diario": "7", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_fabiani ", "Etiqueta": "Lagartija De Fabi\u00e1n", "Grupo": "M\u00e1s visitadas"}, {"ID": 214, "Nombre Cient\u00edfico": "Hippocamelus bisulcus", "Nombre Com\u00fan": "huemul, taruca, w\u00fcmul, g\u00fcemul, shoan, shoen, trula, hueque, ciervo sur andino", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 988.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Hippocamelus_bisulcus ", "Etiqueta": "Huemul", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 216, "Nombre Cient\u00edfico": "Spheniscus humboldti", "Nombre Com\u00fan": "ping\u00fcino de Humboldt, ping\u00fcino, p\u00e1jaro ni\u00f1o, patranka, Humboldt Penguin (ingl\u00e9s), Peruvian penguin (ingl\u00e9s)", "Clase": "Aves", "RCE": "EN", "Total Visitas (periodo seis meses)": 952.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Spheniscus_humboldti ", "Etiqueta": "Ping\u00fcino De Humboldt", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 87, "Nombre Cient\u00edfico": "Americobdella valdiviana", "Nombre Com\u00fan": "Liguay, sanguijuela gigante valdiviana", "Clase": "Clitellata", "RCE": "EN", "Total Visitas (periodo seis meses)": 15.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Americobdella_valdiviana ", "Etiqueta": "Liguay", "Grupo": "Menos visitadas"}, {"ID": 160, "Nombre Cient\u00edfico": "Liolaemus nigrocoeruleus", "Nombre Com\u00fan": "Lagartija negro azulada, Black Bluish Lizard (Ingl\u00e9s)", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 13.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_nigrocoeruleus ", "Etiqueta": "Lagartija Negro Azulada", "Grupo": "Menos visitadas"}, {"ID": 181, "Nombre Cient\u00edfico": "Paropisthopatus umbrinus", "Nombre Com\u00fan": "Gusano aterciopelado, onic\u00f3foro (gen\u00e9rico)", "Clase": "Udeonycophora", "RCE": "EN", "Total Visitas (periodo seis meses)": 8.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Paropisthopatus_umbrinus ", "Etiqueta": "Gusano Aterciopelado", "Grupo": "Menos visitadas"}, {"ID": 46, "Nombre Cient\u00edfico": "Pseudorestias lirimensis", "Nombre Com\u00fan": "pez (gen\u00e9rico)", "Clase": "Actinopterygii", "RCE": "CR", "Total Visitas (periodo seis meses)": 5.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Pseudorestias_lirimensis", "Etiqueta": "Pez (Gen\u00e9rico)", "Grupo": "Menos visitadas"}, {"ID": 215, "Nombre Cient\u00edfico": "Rhinoderma darwinii", "Nombre Com\u00fan": "ranita de Darwin", "Clase": "Amphibia", "RCE": "EN", "Total Visitas (periodo seis meses)": 380.0, "Promedio Diario": "2", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Rhinoderma_darwinii ", "Etiqueta": "Ranita De Darwin", "Grupo": "Especies medi\u00e1ticas"}]}};
+
+                        var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelColor": "#1A2C46", "titleColor": "#1A2C46"}, "legend": {"labelColor": "#1A2C46", "titleColor": "#1A2C46"}, "title": {"color": "#1A2C46", "fontSize": 20}}, "vconcat": [{"data": {"name": "data-f8523f23d62a8f59d07c08580ddbc375"}, "mark": {"type": "text", "align": "left", "color": "#1A2C46", "fontSize": 16}, "encoding": {"text": {"field": "texto", "type": "nominal"}}, "height": 40, "width": 800}, {"data": {"name": "data-3e97910a1153d7b010473dbac440d445"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "CATEGOR\u00cdA VIGENTE", "scale": {"domain": ["CR", "EN", "EN-RARA"], "range": ["#8F2A3F", "#EFEDA0", "#1A2C46"]}, "title": "Categor\u00eda", "type": "nominal"}, "tooltip": [{"field": "REGI\u00d3N", "title": "Regi\u00f3n", "type": "nominal"}, {"field": "CATEGOR\u00cdA VIGENTE", "title": "Categor\u00eda", "type": "nominal"}, {"field": "TOTAL", "title": "Cantidad", "type": "quantitative"}], "x": {"field": "TOTAL", "title": "Cantidad de especies", "type": "quantitative"}, "y": {"field": "REGI\u00d3N", "sort": "-x", "title": "Regi\u00f3n", "type": "nominal"}}, "height": 500, "title": "Especies amenazadas por regi\u00f3n seg\u00fan categor\u00eda de conservaci\u00f3n", "width": 800}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-f8523f23d62a8f59d07c08580ddbc375": [{"texto": "CR: 82 especies   | EN: 227 especies   |   EN-RARA: 27 especies   | Total: 336 especies"}], "data-3e97910a1153d7b010473dbac440d445": [{"REGI\u00d3N": "Antofagasta (II)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 15}, {"REGI\u00d3N": "Antofagasta (II)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 15}, {"REGI\u00d3N": "Araucan\u00eda (IX)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 3}, {"REGI\u00d3N": "Araucan\u00eda (IX)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 17}, {"REGI\u00d3N": "Araucan\u00eda (IX)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 4}, {"REGI\u00d3N": "Arica y Parinacota (XV)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 2}, {"REGI\u00d3N": "Arica y Parinacota (XV)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 7}, {"REGI\u00d3N": "Arica y Parinacota (XV)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 4}, {"REGI\u00d3N": "Atacama (III)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 2}, {"REGI\u00d3N": "Atacama (III)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 9}, {"REGI\u00d3N": "Ays\u00e9n (XI)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 3}, {"REGI\u00d3N": "B\u00edo-B\u00edo (VIII)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 9}, {"REGI\u00d3N": "B\u00edo-B\u00edo (VIII)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 22}, {"REGI\u00d3N": "B\u00edo-B\u00edo (VIII)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 5}, {"REGI\u00d3N": "Coquimbo (IV)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 3}, {"REGI\u00d3N": "Coquimbo (IV)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 14}, {"REGI\u00d3N": "De Los Lagos (X)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 11}, {"REGI\u00d3N": "De Los Lagos (X)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 1}, {"REGI\u00d3N": "De Los R\u00edos (XIV)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 2}, {"REGI\u00d3N": "De Los R\u00edos (XIV)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 14}, {"REGI\u00d3N": "De Los R\u00edos (XIV)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 3}, {"REGI\u00d3N": "Desventuradas", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 3}, {"REGI\u00d3N": "Desventuradas", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 2}, {"REGI\u00d3N": "Insular", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 3}, {"REGI\u00d3N": "Isla de Pascua", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 2}, {"REGI\u00d3N": "Juan Fern\u00e1ndez", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 19}, {"REGI\u00d3N": "Juan Fern\u00e1ndez", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 33}, {"REGI\u00d3N": "Juan Fern\u00e1ndez", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 1}, {"REGI\u00d3N": "Maule (VII)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 3}, {"REGI\u00d3N": "Maule (VII)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 17}, {"REGI\u00d3N": "Maule (VII)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 1}, {"REGI\u00d3N": "Metropolitana (RM)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 5}, {"REGI\u00d3N": "Metropolitana (RM)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 18}, {"REGI\u00d3N": "Metropolitana (RM)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 3}, {"REGI\u00d3N": "O'Higgins (VI)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 6}, {"REGI\u00d3N": "O'Higgins (VI)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 10}, {"REGI\u00d3N": "O'Higgins (VI)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 3}, {"REGI\u00d3N": "Tarapaca (I)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 3}, {"REGI\u00d3N": "Tarapaca (I)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 4}, {"REGI\u00d3N": "Tarapaca (I)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 1}, {"REGI\u00d3N": "Valpara\u00edso continental (V)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 5}, {"REGI\u00d3N": "Valpara\u00edso continental (V)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 13}, {"REGI\u00d3N": "Valpara\u00edso continental (V)", "CATEGOR\u00cdA VIGENTE": "EN-RARA", "TOTAL": 1}, {"REGI\u00d3N": "\u00d1uble  (XVI)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 1}, {"REGI\u00d3N": "\u00d1uble  (XVI)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 12}, {"REGI\u00d3N": "\u00d1uble (XVI)", "CATEGOR\u00cdA VIGENTE": "CR", "TOTAL": 1}, {"REGI\u00d3N": "\u00d1uble (XVI)", "CATEGOR\u00cdA VIGENTE": "EN", "TOTAL": 1}]}};
+
                         var embedOpt = {"mode": "vega-lite"};
+
                         vegaEmbed("#vis-martina", spec, embedOpt).catch(console.error);
+
                       })(vegaEmbed);
+
                     </script>
+
                 </div>
+
                 
+
                 <div class="scrolly-textos">
+
                     <div class="tarjeta-scroll">
+
                         <p>Este simpático espécimen es un ejemplar único en el mundo. Vive en una zona extremadamente restringida: el cerro Poqui, en la Región del Libertador General Bernardo O’Higgins. Actualmente se encuentra en peligro crítico de extinción, la categoría más alta de vulneración según la UICN.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <p>Y aunque el Borrachito se presenta como un habitante de un solo lugar, no todos los casos son así; al menos no el de <em>Mordacia lapicida</em>, también conocida como lamprea de agua dulce, un pez sin mandíbula que se remonta al período Paleozoico y que es considerado un fósil viviente.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <p>Cada especie tiene una historia asombrosa, pero hoy muchas se ven amenazadas por la limitada cantidad de ejemplares. Incluso cuando se agrupan por región y el número llega a 336 animales, siguen siendo cifras bajas que reflejan la vulnerabilidad endémica de nuestro país.</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <section class="cronica-seccion animar-seccion">
+
             <div class="ancho-texto">
+
                 <h2>Las especies amenazadas que sí vemos y las que ignoramos</h2>
+
                 <p>Algunas especies logran instalarse en la memoria colectiva incluso sin haber sido vistas nunca en persona. Basta escuchar sus nombres para imaginarlas: el huemul cruzando montañas nevadas del sur de Chile; el pingüino de Humboldt desplazándose entre rocas costeras del norte; o la pequeña ranita de Darwin. Hay animales que consiguen permanecer presentes dentro del imaginario cultural.</p>
+
                 <p>Otras especies no tienen esa suerte.</p>
+
                 <p>Mientras ciertos animales acumulan miles de visitas en Wikipedia, existen especies amenazadas que sobreviven en una invisibilidad digital casi absoluta. La atención digital no determina por sí sola la supervivencia de una especie, pero sí permite observar cómo funciona el interés público frente a la conservación. En este sentido, <strong>Wikipedia opera como una especie de termómetro cultural</strong>.</p>
+
             </div>
+
+
 
             <div class="scrolly-wrapper">
+
                 <div class="scrolly-fondo vega-embed-container">
+
                     
+
                     <div id="vis-virginia"></div>
+
                     <script>
+
                       (function(vegaEmbed) {
+
                         var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"gridColor": "#EFEDA0", "gridOpacity": 0.6, "labelColor": "#1F3D5B", "labelFontSize": 13, "titleColor": "#1F3D5B", "titleFontSize": 14}, "legend": {"labelColor": "#1F3D5B", "labelFontSize": 13, "symbolSize": 180, "titleFontSize": 14}, "title": {"anchor": "start", "color": "#91532B", "fontSize": 22, "offset": 20, "subtitleColor": "#1F3D5B", "subtitleFontSize": 14}}, "data": {"name": "data-403a539f6085133a54b9b0bdafd8c9de"}, "mark": {"type": "circle", "opacity": 0.9, "size": 260}, "encoding": {"color": {"field": "Grupo", "legend": {"orient": "top-right"}, "scale": {"domain": ["M\u00e1s visitadas", "Especies medi\u00e1ticas", "Menos visitadas"], "range": ["#0695D1", "#86223E", "#1F3D5B"]}, "title": "", "type": "nominal"}, "tooltip": [{"field": "Nombre Cient\u00edfico", "title": "Nombre cient\u00edfico", "type": "nominal"}, {"field": "Nombre Com\u00fan", "title": "Nombre com\u00fan", "type": "nominal"}, {"field": "Clase", "title": "Clase", "type": "nominal"}, {"field": "RCE", "title": "Categor\u00eda", "type": "nominal"}, {"field": "Total Visitas (periodo seis meses)", "title": "Visitas", "type": "quantitative"}], "x": {"field": "Total Visitas (periodo seis meses)", "title": "Total de visitas en Wikipedia (6 meses)", "type": "quantitative"}, "y": {"axis": {"labelLimit": 500}, "field": "Etiqueta", "sort": ["Pez (Gen\u00e9rico)", "Gusano Aterciopelado", "Lagartija Negro Azulada", "Liguay", "Ranita De Darwin", "Ping\u00fcino De Humboldt", "Huemul", "Lagartija De Fabi\u00e1n", "Zorro De Chilo\u00e9", "Chinchilla Costina"], "title": "", "type": "nominal"}}, "height": 450, "title": {"text": "Las especies amenazadas que s\u00ed vemos y las que ignoramos", "subtitle": ["Contraste de inter\u00e9s ciudadano y volumen de visitas digitales en Wikipedia"]}, "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-403a539f6085133a54b9b0bdafd8c9de": [{"ID": 112, "Nombre Cient\u00edfico": "Chinchilla lanigera", "Nombre Com\u00fan": "Chinchilla costina", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 9259.0, "Promedio Diario": "51", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Chinchilla_lanigera ", "Etiqueta": "Chinchilla Costina", "Grupo": "M\u00e1s visitadas"}, {"ID": 167, "Nombre Cient\u00edfico": "Lycalopex fulvipes", "Nombre Com\u00fan": "Zorro de Chilo\u00e9", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 2152.0, "Promedio Diario": "12", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Lycalopex_fulvipes ", "Etiqueta": "Zorro De Chilo\u00e9", "Grupo": "M\u00e1s visitadas"}, {"ID": 154, "Nombre Cient\u00edfico": "Liolaemus fabiani", "Nombre Com\u00fan": "Lagartija de Fabi\u00e1n", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 1311.0, "Promedio Diario": "7", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_fabiani ", "Etiqueta": "Lagartija De Fabi\u00e1n", "Grupo": "M\u00e1s visitadas"}, {"ID": 214, "Nombre Cient\u00edfico": "Hippocamelus bisulcus", "Nombre Com\u00fan": "huemul, taruca, w\u00fcmul, g\u00fcemul, shoan, shoen, trula, hueque, ciervo sur andino", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 988.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Hippocamelus_bisulcus ", "Etiqueta": "Huemul", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 216, "Nombre Cient\u00edfico": "Spheniscus humboldti", "Nombre Com\u00fan": "ping\u00fcino de Humboldt, ping\u00fcino, p\u00e1jaro ni\u00f1o, patranka, Humboldt Penguin (ingl\u00e9s), Peruvian penguin (ingl\u00e9s)", "Clase": "Aves", "RCE": "EN", "Total Visitas (periodo seis meses)": 952.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Spheniscus_humboldti ", "Etiqueta": "Ping\u00fcino De Humboldt", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 87, "Nombre Cient\u00edfico": "Americobdella valdiviana", "Nombre Com\u00fan": "Liguay, sanguijuela gigante valdiviana", "Clase": "Clitellata", "RCE": "EN", "Total Visitas (periodo seis meses)": 15.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Americobdella_valdiviana ", "Etiqueta": "Liguay", "Grupo": "Menos visitadas"}, {"ID": 160, "Nombre Cient\u00edfico": "Liolaemus nigrocoeruleus", "Nombre Com\u00fan": "Lagartija negro azulada, Black Bluish Lizard (Ingl\u00e9s)", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 13.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_nigrocoeruleus ", "Etiqueta": "Lagartija Negro Azulada", "Grupo": "Menos visitadas"}, {"ID": 181, "Nombre Cient\u00edfico": "Paropisthopatus umbrinus", "Nombre Com\u00fan": "Gusano aterciopelado, onic\u00f3foro (gen\u00e9rico)", "Clase": "Udeonycophora", "RCE": "EN", "Total Visitas (periodo seis meses)": 8.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Paropisthopatus_umbrinus ", "Etiqueta": "Gusano Aterciopelado", "Grupo": "Menos visitadas"}, {"ID": 46, "Nombre Cient\u00edfico": "Pseudorestias lirimensis", "Nombre Com\u00fan": "pez (gen\u00e9rico)", "Clase": "Actinopterygii", "RCE": "CR", "Total Visitas (periodo seis meses)": 5.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Pseudorestias_lirimensis", "Etiqueta": "Pez (Gen\u00e9rico)", "Grupo": "Menos visitadas"}, {"ID": 215, "Nombre Cient\u00edfico": "Rhinoderma darwinii", "Nombre Com\u00fan": "ranita de Darwin", "Clase": "Amphibia", "RCE": "EN", "Total Visitas (periodo seis meses)": 380.0, "Promedio Diario": "2", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Rhinoderma_darwinii ", "Etiqueta": "Ranita De Darwin", "Grupo": "Especies medi\u00e1ticas"}]}};
+
                         var embedOpt = {"mode": "vega-lite"};
+
                         vegaEmbed("#vis-virginia", spec, embedOpt).catch(console.error);
+
                       })(vegaEmbed);
+
                     </script>
+
                 </div>
+
                 
+
                 <div class="scrolly-textos">
+
                     <div class="tarjeta-scroll">
+
                         <h3>La paradoja del carisma</h3>
+
                         <p>Al mirar el gráfico, la primera gran sorpresa destruye nuestras suposiciones. Uno esperaría que el <em>Hippocamelus bisulcus</em> (huemul) liderara las búsquedas. Sin embargo, es eclipsado por la <strong>Chinchilla costina</strong> (<em>Chinchilla lanigera</em>), que corona la lista con un abismal récord de <strong>9.259 visitas</strong>.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <p>Cuando el termómetro de Wikipedia registra miles de clics, no mide la preocupación ambiental por las escasas poblaciones salvajes, sino el interés doméstico por un animal de compañía. Es lo que la ciencia denomina <strong>"extinción virtual"</strong>.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <h3>La asfixia del fondo</h3>
+
                         <p>Mientras la "aristocracia digital" captura los clics, el fondo del gráfico nos devuelve a la asfixia informativa. Peces, insectos y pequeños reptiles rozan el cero absoluto. Comparten el mismo nivel de amenaza que el huemul, pero sufren una condena doble: desaparecer físicamente y ser invisibles en la red.</p>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="bloque-interactivo">
+
                 <div class="texto-izquierdo">
+
                     <p>Cada especie amenazada posee una historia propia, una forma particular de habitar el territorio y una posición específica dentro del engranaje de la vida. Sin embargo, no todas ocupan el mismo lugar dentro de la memoria colectiva. Algunas logran convertirse en emblemas reconocibles o fetiches de la cultura digital; otras desaparecen silenciosamente, asfixiadas por el desinterés, incluso antes de que la mayoría aprenda sus nombres.</p>
+
                 </div>
+
                 
+
                 <div class="ficha-derecha">
+
                     <button class="acordeon-btn">FICHA: CHINCHILLA <span class="icono-acordeon">+</span></button>
+
                     <div class="acordeon-panel">
+
                         <div class="contenido-ficha">
+
                             <p><strong>[PRONTO]</strong><br>Ilustración acorde a la estética</p>
+
                             <p><strong>[PRONTO]</strong><br>Fotografía de la especie real</p>
+
                             <p><strong>[PRONTO]</strong><br>Datos Técnicos (Familia, Hábitat, etc)</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section class="cronica-seccion animar-seccion">
+
             <div class="ancho-texto">
+
                 <h2>La asfixia del espacio mediático: El silencio de las especies invisibles</h2>
+
                 <p>¿Alguna vez has sentido que tienes un hermano o hermana que se roba toda la atención en las reuniones familiares mientras tú pasas casi desapercibido? Para la ranita de Darwin del norte (<em>Rhinoderma rufum</em>), esta no es una suposición, sino su realidad diaria frente a su pariente del sur. Al analizar las noticias de los últimos seis meses, descubrimos que mientras la ranita del sur es protagonista en el 100% de sus apariciones, su "hermana" del norte lo es en solo 4 de 13.</p>
+
             </div>
+
+
 
             <div class="bloque-interactivo">
+
                 <div class="texto-izquierdo">
+
                     <p>Este fenómeno se explica mediante una idea sencilla: el espacio mediático es como una habitación con un tamaño fijo; si alguien entra con un megáfono y ocupa mucho lugar, los demás se quedan sin sitio para ser escuchados. En nuestra prensa, ese "megáfono" lo tiene el pingüino de Humboldt, quien acapara el centro de la escena en las 76 noticias donde se le nombra.</p>
+
                 </div>
+
                 
+
                 <div class="ficha-derecha">
+
                     <button class="acordeon-btn">FICHA: PINGÜINO <span class="icono-acordeon">+</span></button>
+
                     <div class="acordeon-panel">
+
                         <div class="contenido-ficha">
+
                             <p><strong>[PRONTO]</strong><br>Ilustración acorde a la estética</p>
+
                             <p><strong>[PRONTO]</strong><br>Fotografía de la especie real</p>
+
                             <p><strong>[PRONTO]</strong><br>Datos Técnicos (Familia, Hábitat, etc)</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="scrolly-wrapper">
+
                 <div class="scrolly-fondo vega-embed-container">
+
                     
+
                     <div id="vis-carolina"></div>
+
                     <script>
+
                       (function(vegaEmbed) {
-                        var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"gridColor": "#EFEDA0", "gridOpacity": 0.6, "labelColor": "#1F3D5B", "labelFontSize": 13, "titleColor": "#1F3D5B", "titleFontSize": 14}, "legend": {"labelColor": "#1F3D5B", "labelFontSize": 13, "symbolSize": 180, "titleFontSize": 14}, "title": {"anchor": "start", "color": "#91532B", "fontSize": 22, "offset": 20, "subtitleColor": "#1F3D5B", "subtitleFontSize": 14}}, "data": {"name": "data-403a539f6085133a54b9b0bdafd8c9de"}, "mark": {"type": "circle", "opacity": 0.9, "size": 260}, "encoding": {"color": {"field": "Grupo", "legend": {"orient": "top-right"}, "scale": {"domain": ["M\u00e1s visitadas", "Especies medi\u00e1ticas", "Menos visitadas"], "range": ["#0695D1", "#86223E", "#1F3D5B"]}, "title": "", "type": "nominal"}, "tooltip": [{"field": "Nombre Cient\u00edfico", "title": "Nombre cient\u00edfico", "type": "nominal"}, {"field": "Nombre Com\u00fan", "title": "Nombre com\u00fan", "type": "nominal"}, {"field": "Clase", "title": "Clase", "type": "nominal"}, {"field": "RCE", "title": "Categor\u00eda", "type": "nominal"}, {"field": "Total Visitas (periodo seis meses)", "title": "Visitas", "type": "quantitative"}], "x": {"field": "Total Visitas (periodo seis meses)", "title": "Total de visitas en Wikipedia (6 meses)", "type": "quantitative"}, "y": {"axis": {"labelLimit": 500}, "field": "Etiqueta", "sort": ["Pez (Gen\u00e9rico)", "Gusano Aterciopelado", "Lagartija Negro Azulada", "Liguay", "Ranita De Darwin", "Ping\u00fcino De Humboldt", "Huemul", "Lagartija De Fabi\u00e1n", "Zorro De Chilo\u00e9", "Chinchilla Costina"], "title": "", "type": "nominal"}}, "height": 450, "title": {"text": "Las especies amenazadas que s\u00ed vemos y las que ignoramos", "subtitle": ["Contraste de inter\u00e9s ciudadano y volumen de visitas digitales en Wikipedia"]}, "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-403a539f6085133a54b9b0bdafd8c9de": [{"ID": 112, "Nombre Cient\u00edfico": "Chinchilla lanigera", "Nombre Com\u00fan": "Chinchilla costina", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 9259.0, "Promedio Diario": "51", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Chinchilla_lanigera ", "Etiqueta": "Chinchilla Costina", "Grupo": "M\u00e1s visitadas"}, {"ID": 167, "Nombre Cient\u00edfico": "Lycalopex fulvipes", "Nombre Com\u00fan": "Zorro de Chilo\u00e9", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 2152.0, "Promedio Diario": "12", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Lycalopex_fulvipes ", "Etiqueta": "Zorro De Chilo\u00e9", "Grupo": "M\u00e1s visitadas"}, {"ID": 154, "Nombre Cient\u00edfico": "Liolaemus fabiani", "Nombre Com\u00fan": "Lagartija de Fabi\u00e1n", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 1311.0, "Promedio Diario": "7", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_fabiani ", "Etiqueta": "Lagartija De Fabi\u00e1n", "Grupo": "M\u00e1s visitadas"}, {"ID": 214, "Nombre Cient\u00edfico": "Hippocamelus bisulcus", "Nombre Com\u00fan": "huemul, taruca, w\u00fcmul, g\u00fcemul, shoan, shoen, trula, hueque, ciervo sur andino", "Clase": "Mammalia", "RCE": "EN", "Total Visitas (periodo seis meses)": 988.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Hippocamelus_bisulcus ", "Etiqueta": "Huemul", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 216, "Nombre Cient\u00edfico": "Spheniscus humboldti", "Nombre Com\u00fan": "ping\u00fcino de Humboldt, ping\u00fcino, p\u00e1jaro ni\u00f1o, patranka, Humboldt Penguin (ingl\u00e9s), Peruvian penguin (ingl\u00e9s)", "Clase": "Aves", "RCE": "EN", "Total Visitas (periodo seis meses)": 952.0, "Promedio Diario": "5", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Spheniscus_humboldti ", "Etiqueta": "Ping\u00fcino De Humboldt", "Grupo": "Especies medi\u00e1ticas"}, {"ID": 87, "Nombre Cient\u00edfico": "Americobdella valdiviana", "Nombre Com\u00fan": "Liguay, sanguijuela gigante valdiviana", "Clase": "Clitellata", "RCE": "EN", "Total Visitas (periodo seis meses)": 15.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Americobdella_valdiviana ", "Etiqueta": "Liguay", "Grupo": "Menos visitadas"}, {"ID": 160, "Nombre Cient\u00edfico": "Liolaemus nigrocoeruleus", "Nombre Com\u00fan": "Lagartija negro azulada, Black Bluish Lizard (Ingl\u00e9s)", "Clase": "Reptilia", "RCE": "EN", "Total Visitas (periodo seis meses)": 13.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Liolaemus_nigrocoeruleus ", "Etiqueta": "Lagartija Negro Azulada", "Grupo": "Menos visitadas"}, {"ID": 181, "Nombre Cient\u00edfico": "Paropisthopatus umbrinus", "Nombre Com\u00fan": "Gusano aterciopelado, onic\u00f3foro (gen\u00e9rico)", "Clase": "Udeonycophora", "RCE": "EN", "Total Visitas (periodo seis meses)": 8.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Paropisthopatus_umbrinus ", "Etiqueta": "Gusano Aterciopelado", "Grupo": "Menos visitadas"}, {"ID": 46, "Nombre Cient\u00edfico": "Pseudorestias lirimensis", "Nombre Com\u00fan": "pez (gen\u00e9rico)", "Clase": "Actinopterygii", "RCE": "CR", "Total Visitas (periodo seis meses)": 5.0, "Promedio Diario": "0", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Pseudorestias_lirimensis", "Etiqueta": "Pez (Gen\u00e9rico)", "Grupo": "Menos visitadas"}, {"ID": 215, "Nombre Cient\u00edfico": "Rhinoderma darwinii", "Nombre Com\u00fan": "ranita de Darwin", "Clase": "Amphibia", "RCE": "EN", "Total Visitas (periodo seis meses)": 380.0, "Promedio Diario": "2", "URL Fuente": "https://pageviews.wmcloud.org/?project=en.wikipedia.org&platform=all-access&agent=user&redirects=0&start=2025-09-25&end=2026-03-25&pages=Rhinoderma_darwinii ", "Etiqueta": "Ranita De Darwin", "Grupo": "Especies medi\u00e1ticas"}]}};
+
+                        var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "background": "#FBF8F0"}, "layer": [{"mark": {"type": "rect", "stroke": "white", "strokeWidth": 1}, "encoding": {"color": {"field": "RCE", "scale": {"domain": ["CR", "EN"], "range": ["#86223E", "#91532B"]}, "title": "Categor\u00eda de Riesgo", "type": "nominal"}, "tooltip": [{"field": "Nombre com\u00fan", "title": "Nombre Com\u00fan", "type": "nominal"}, {"field": "Nombre cient\u00edfico", "title": "Nombre Cient\u00edfico", "type": "nominal"}, {"field": "RCE", "title": "Estado de Conservaci\u00f3n", "type": "nominal"}, {"field": "Ficha t\u00e9cnica", "title": "Ficha T\u00e9cnica Descriptiva", "type": "nominal"}], "x": {"axis": {"format": "%"}, "field": "x0", "title": "Distribuci\u00f3n del Espacio Medi\u00e1tico", "type": "quantitative"}, "x2": {"field": "x1"}, "y": {"value": 50}, "y2": {"value": 350}}}, {"mark": {"type": "text", "align": "center", "angle": 270, "baseline": "middle", "color": "white", "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"field": "etiqueta_grafico", "type": "nominal"}, "x": {"field": "xmid", "type": "quantitative"}, "y": {"value": 200}}}], "data": {"name": "data-6fe9bf1e4e767c9b7d3ed32c03bb2b6a"}, "height": 400, "title": {"text": "LA ASFIXIA DEL ESPACIO MEDI\u00c1TICO", "subtitle": ["Mientras algunas especies brillan en su protagonismo, otras son invisibles para los medios."], "color": "#91532B", "fontSize": 22, "subtitleColor": "#1F3D5B"}, "width": 850, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-6fe9bf1e4e767c9b7d3ed32c03bb2b6a": [{"Etiqueta": 216, "Nombre cient\u00edfico": "Spheniscus humboldti", "Nombre com\u00fan": "Ping\u00fcino de Humboldt", "Clase": "Aves", "RCE": "EN", "End\u00e9mica": "No", "Apariciones": 76, "Protagonista": 76, "% Protagonismo": "100", "Foto": 76, "Link foto": "https://live.staticflickr.com/65535/55263020062_f44250f42a.jpg", "Ficha t\u00e9cnica": "Vive en costas e islas del norte y centro de Chile. En Peligro (EN), nidifica en cavidades de guano y se ve afectado por la sobrepesca y el cambio clim\u00e1tico.", "prop": 0.5277777777777778, "x0": 0.0, "x1": 0.5277777777777778, "xmid": 0.2638888888888889, "etiqueta_grafico": "Ping\u00fcino de Humboldt"}, {"Etiqueta": 215, "Nombre cient\u00edfico": "Rhinoderma darwinii", "Nombre com\u00fan": "Ranita de Darwin", "Clase": "Amphibia", "RCE": "EN", "End\u00e9mica": "No", "Apariciones": 24, "Protagonista": 24, "% Protagonismo": "100", "Foto": 24, "Link foto": "https://live.staticflickr.com/65535/55264061388_d183652526.jpg", "Ficha t\u00e9cnica": "Habita bosques templados del sur. En estado En Peligro (EN), destaca porque el macho incuba los renacuajos en su saco vocal. Sus poblaciones declinan por el hongo qu\u00edtrido y la deforestaci\u00f3n.", "prop": 0.16666666666666666, "x0": 0.5277777777777778, "x1": 0.6944444444444444, "xmid": 0.6111111111111112, "etiqueta_grafico": "Ranita de Darwin"}, {"Etiqueta": 49, "Nombre cient\u00edfico": "Rhinoderma rufum", "Nombre com\u00fan": "Ranita de Darwin del Norte", "Clase": "Amphibia", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 13, "Protagonista": 4, "% Protagonismo": "30,76923077", "Foto": 13, "Link foto": "https://live.staticflickr.com/65535/55263020057_84a2207950.jpg", "Ficha t\u00e9cnica": "Habitaba la zona central (Maule a Biob\u00edo). En Peligro Cr\u00edtico (CR) y probablemente extinta, su desaparici\u00f3n se vincula a la p\u00e9rdida de bosque nativo y la propagaci\u00f3n de enfermedades f\u00fangicas.", "prop": 0.09027777777777778, "x0": 0.6944444444444444, "x1": 0.7847222222222222, "xmid": 0.7395833333333333, "etiqueta_grafico": "Ranita de Darwin del Norte"}, {"Etiqueta": 45, "Nombre cient\u00edfico": "Pristidactylus alvaroi", "Nombre com\u00fan": "Lagarto gru\u00f1idor de \u00c1lvaro", "Clase": "Reptilia", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 9, "Protagonista": 7, "% Protagonismo": "77,77777778", "Foto": 8, "Link foto": "https://live.staticflickr.com/65535/55264324885_5b4d80044b.jpg", "Ficha t\u00e9cnica": "End\u00e9mico de la Cordillera de la Costa central. En Peligro Cr\u00edtico (CR), emite sonidos al ser amenazado. Su h\u00e1bitat en cumbres boscosas como el Cerro El Roble es vulnerable a incendios.", "prop": 0.0625, "x0": 0.7847222222222222, "x1": 0.8472222222222222, "xmid": 0.8159722222222222, "etiqueta_grafico": "Lagarto gru\u00f1idor de \u00c1lvaro"}, {"Etiqueta": 25, "Nombre cient\u00edfico": "Eulidia yarrellii", "Nombre com\u00fan": "Picaflor de Arica", "Clase": "Aves", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 8, "Protagonista": 8, "% Protagonismo": "100", "Foto": 8, "Link foto": "https://live.staticflickr.com/65535/55264061478_8273248e77.jpg", "Ficha t\u00e9cnica": "Habita valles de la Regi\u00f3n de Arica. En Peligro Cr\u00edtico (CR), es el ave m\u00e1s peque\u00f1a del pa\u00eds. Su extinci\u00f3n es inminente debido al uso de pesticidas y p\u00e9rdida de vegetaci\u00f3n.", "prop": 0.05555555555555555, "x0": 0.8472222222222222, "x1": 0.9027777777777778, "xmid": 0.875, "etiqueta_grafico": "Picaflor de Arica"}, {"Etiqueta": 214, "Nombre cient\u00edfico": "Hippocamelus bisulcus", "Nombre com\u00fan": "Huemul", "Clase": "Mammalia", "RCE": "EN", "End\u00e9mica": "No", "Apariciones": 8, "Protagonista": 5, "% Protagonismo": "62,5", "Foto": 8, "Link foto": "https://live.staticflickr.com/65535/55264157039_b62cefd96c.jpg", "Ficha t\u00e9cnica": "Reside en los bosques andino-patag\u00f3nicos. En estado En Peligro (EN), este ciervo emblem\u00e1tico es Monumento Natural y enfrenta amenazas como ataques de perros, enfermedades ganaderas y fragmentaci\u00f3n de h\u00e1bitat.", "prop": 0.05555555555555555, "x0": 0.9027777777777778, "x1": 0.9583333333333334, "xmid": 0.9305555555555556, "etiqueta_grafico": "Huemul"}, {"Etiqueta": 17, "Nombre cient\u00edfico": "Chilina angusta", "Nombre com\u00fan": "Caracol de Paposo", "Clase": "Gastropoda", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 4, "Protagonista": 1, "% Protagonismo": "25", "Foto": 3, "Link foto": "https://live.staticflickr.com/65535/55264061428_f0682c5434.jpg", "Ficha t\u00e9cnica": "Habita exclusivamente en los oasis de niebla de Antofagasta. Clasificado en Peligro Cr\u00edtico (CR), este molusco depende de la humedad de las nubes y sufre por la sequ\u00eda extrema.", "prop": 0.027777777777777776, "x0": 0.9583333333333334, "x1": 0.9861111111111112, "xmid": 0.9722222222222223, "etiqueta_grafico": "Caracol de Paposo"}, {"Etiqueta": 50, "Nombre cient\u00edfico": "Sclerostomulus nitidus", "Nombre com\u00fan": "Borrachito", "Clase": "Insecta", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 1, "Protagonista": 0, "% Protagonismo": "0", "Foto": 1, "Link foto": "https://live.staticflickr.com/65535/55264157119_fa2a0bec27.jpg", "Ficha t\u00e9cnica": "Peque\u00f1a ave de valles del norte grande. En Peligro (EN), es un insect\u00edvoro esencial para su ecosistema, aunque la degradaci\u00f3n de los valles des\u00e9rticos amenaza su equilibrio local.", "prop": 0.006944444444444444, "x0": 0.9861111111111112, "x1": 0.9930555555555556, "xmid": 0.9895833333333334, "etiqueta_grafico": ""}, {"Etiqueta": 51, "Nombre cient\u00edfico": "Sephanoides fernandensis", "Nombre com\u00fan": "Picaflor de Juan Fern\u00e1ndez", "Clase": "Aves", "RCE": "CR", "End\u00e9mica": "S\u00cd", "Apariciones": 1, "Protagonista": 0, "% Protagonismo": "0", "Foto": 1, "Link foto": "https://live.staticflickr.com/65535/55264061568_47bfe31dc6.jpg", "Ficha t\u00e9cnica": "Exclusivo de la Isla Robinson Crusoe. En Peligro Cr\u00edtico (CR), destaca por su plumaje rojizo \u00fanico. Es amenazado severamente por gatos, coat\u00edes y la invasi\u00f3n de plantas ex\u00f3ticas en su h\u00e1bitat.", "prop": 0.006944444444444444, "x0": 0.9930555555555556, "x1": 1.0, "xmid": 0.9965277777777778, "etiqueta_grafico": ""}]}};
+
                         var embedOpt = {"mode": "vega-lite"};
+
                         vegaEmbed("#vis-carolina", spec, embedOpt).catch(console.error);
+
                       })(vegaEmbed);
+
                     </script>
+
                 </div>
+
                 
+
                 <div class="scrolly-textos">
+
                     <div class="tarjeta-scroll">
+
                         <h3>Muro de la invisibilidad</h3>
+
                         <p>A esto le llamamos asfixia del espacio mediático: cuando unas pocas especies muy famosas se quedan con toda la atención, las demás terminan siendo invisibles para el público. Esto genera que gran cantidad de especies en Riesgo Crítico vivan en las sombras de la información.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <p>Por ejemplo, mientras el pingüino brilla en las portadas, insectos como el borrachito o aves como el picaflor de Juan Fernández registran apenas una mención. Incluso el caracol de Paposo, que se encuentra en Peligro Crítico, logra ser el protagonista en solo 1 de las 4 noticias publicadas sobre él.</p>
+
                     </div>
+
                     <div class="tarjeta-scroll">
+
                         <p>Al final del día, el muro de la invisibilidad nos enseña que para proteger a nuestra fauna, primero tenemos que aprender a darle espacio a todos en nuestra conversación diaria, permitiendo que las "hermanas invisibles" también tengan la oportunidad de contar su historia.</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
     </div> <footer class="ancho-texto" style="margin: 0 auto;">
+
         <p>Reportaje de Periodismo de Datos y Visualización | Proyecto: Especies al Límite</p>
+
         <p>Datos extraídos a través de la herramienta <a href="https://pageviews.wmcloud.org/" target="_blank">Wikipedia Pageviews Analysis</a> y Registros Oficiales del MMA.</p>
+
     </footer>
 
+
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
