@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
     
+    <!-- Archivo de estilos unificado -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,17 +33,21 @@
             <p class="mensaje-borrachito">"¡Hola! Soy Borrachito, tu guía turístico. Estas especies están ocultas en el espacio digital. Selecciona una categoría y pasa tu cursor sobre las sombras para romper la asfixia mediática y darles visibilidad."</p>
         </div>
 
+        <!-- FILTROS JERARQUIZADOS -->
         <div class="filtros-galeria animar-seccion" id="contenedor-filtros">
+            <!-- Nivel 1: Ver todo -->
             <div class="filtro-grupo principal">
                 <button class="btn-filtro activo" data-filtro="todos">Ver Todas</button>
             </div>
             
+            <!-- Nivel 2: Categorías de Riesgo -->
             <div class="filtro-grupo rce">
                 <button class="btn-filtro" data-filtro="cr">Peligro Crítico (CR)</button>
                 <button class="btn-filtro" data-filtro="en">En Peligro (EN)</button>
                 <button class="btn-filtro" data-filtro="en-r">En Peligro Rara (EN-R)</button>
             </div>
 
+            <!-- Nivel 3: Clases de Animales -->
             <div class="filtro-grupo clase">
                 <button class="btn-filtro" data-filtro="anfibio">Anfibios</button>
                 <button class="btn-filtro" data-filtro="ave">Aves</button>
@@ -325,9 +330,12 @@
         <p>Reportaje de Periodismo de Datos y Visualización | Proyecto: Especies al Límite</p>
     </footer>
 
+    <!-- ESTRUCTURA DEL MODAL (LIGHTBOX) CON NAVEGACIÓN -->
     <div id="modal-galeria" class="modal-oculto">
         <span class="cerrar-modal">&times;</span>
+        <span class="nav-modal prev-modal">&#10094;</span>
         <img class="modal-contenido" id="img-modal">
+        <span class="nav-modal next-modal">&#10095;</span>
         <div id="caption-modal"></div>
     </div>
 
@@ -368,8 +376,17 @@
                 botonesFiltro.forEach(boton => {
                     boton.addEventListener('click', () => {
                         
-                        // Actualizar estilo de botones
-                        botonesFiltro.forEach(b => b.classList.remove('activo'));
+                        // Actualizar estilo de botones (remover activo de su propio grupo)
+                        const grupoPadre = boton.parentElement;
+                        grupoPadre.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
+                        
+                        // Si se hace click en Ver Todas, quitar activo de los demás
+                        if(boton.getAttribute('data-filtro') === 'todos') {
+                            botonesFiltro.forEach(b => b.classList.remove('activo'));
+                        } else {
+                            document.querySelector('[data-filtro="todos"]').classList.remove('activo');
+                        }
+                        
                         boton.classList.add('activo');
 
                         const filtro = boton.getAttribute('data-filtro');
@@ -388,27 +405,55 @@
                 });
             }
 
-            // 4. Lógica del Modal (Lightbox) para agrandar imágenes
+            // 4. Lógica del Modal (Lightbox) con Carrusel
             const modal = document.getElementById("modal-galeria");
             const imgModal = document.getElementById("img-modal");
             const captionModal = document.getElementById("caption-modal");
             const btnCerrar = document.querySelector(".cerrar-modal");
+            const btnPrev = document.querySelector(".prev-modal");
+            const btnNext = document.querySelector(".next-modal");
+
+            let tarjetasVisibles = [];
+            let indiceActual = 0;
+
+            function actualizarModal(indice) {
+                if(tarjetasVisibles.length === 0) return;
+                const tarjeta = tarjetasVisibles[indice];
+                const imagenSrc = tarjeta.querySelector('.img-especie').src;
+                const titulo = tarjeta.querySelector('h3').innerText;
+                const nombreCientifico = tarjeta.querySelector('p').innerText;
+                
+                imgModal.src = imagenSrc;
+                captionModal.innerHTML = `<strong>${titulo}</strong><br><span style="font-size: 1.1rem; font-style: italic;">${nombreCientifico}</span>`;
+            }
 
             // Abrir modal al hacer click en la tarjeta
             tarjetasEspecie.forEach(tarjeta => {
                 tarjeta.addEventListener('click', function() {
-                    const imagenSrc = this.querySelector('.img-especie').src;
-                    const titulo = this.querySelector('h3').innerText;
-                    const nombreCientifico = this.querySelector('p').innerText;
+                    // Actualizar el array solo con las tarjetas que NO están ocultas por el filtro
+                    tarjetasVisibles = Array.from(document.querySelectorAll('.tarjeta-especie:not(.oculto)'));
+                    indiceActual = tarjetasVisibles.indexOf(this);
                     
+                    actualizarModal(indiceActual);
                     modal.classList.add("mostrar");
-                    imgModal.src = imagenSrc;
-                    captionModal.innerHTML = `<strong>${titulo}</strong><br><span style="font-size: 1.1rem; font-style: italic;">${nombreCientifico}</span>`;
-                    
-                    // Bloquear scroll de fondo
-                    document.body.style.overflow = "hidden";
+                    document.body.style.overflow = "hidden"; // Bloquear scroll de fondo
                 });
             });
+
+            // Navegar al Siguiente
+            function mostrarSiguiente() {
+                indiceActual = (indiceActual + 1) % tarjetasVisibles.length;
+                actualizarModal(indiceActual);
+            }
+
+            // Navegar al Anterior
+            function mostrarAnterior() {
+                indiceActual = (indiceActual - 1 + tarjetasVisibles.length) % tarjetasVisibles.length;
+                actualizarModal(indiceActual);
+            }
+
+            btnNext.addEventListener('click', mostrarSiguiente);
+            btnPrev.addEventListener('click', mostrarAnterior);
 
             // Función para cerrar modal
             function cerrarModal() {
@@ -428,10 +473,16 @@
                 }
             });
 
-            // Cerrar al apretar la tecla Escape
+            // Manejo de Teclado (Flechas y Escape)
             document.addEventListener('keydown', function(event) {
-                if (event.key === "Escape" && modal.classList.contains("mostrar")) {
-                    cerrarModal();
+                if (modal.classList.contains("mostrar")) {
+                    if (event.key === "Escape") {
+                        cerrarModal();
+                    } else if (event.key === "ArrowRight") {
+                        mostrarSiguiente();
+                    } else if (event.key === "ArrowLeft") {
+                        mostrarAnterior();
+                    }
                 }
             });
 

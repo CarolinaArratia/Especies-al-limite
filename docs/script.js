@@ -48,19 +48,26 @@ document.addEventListener("DOMContentLoaded", function() {
             this.classList.toggle("active");
            
             var panel = this.nextElementSibling;
-            var icono = this.querySelector('.icono-acordeon'); // Buscamos si hay un icono + o -
+            var icono = this.querySelector('.icono-acordeon');
            
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
-                if(icono) icono.textContent = '+'; // Solo lo cambia si existe
+                if(icono) icono.textContent = '+'; 
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
-                if(icono) icono.textContent = '-'; // Solo lo cambia si existe
+                if(icono) icono.textContent = '-'; 
+
+                // Lógica interactiva de Borrachito (Dato curioso según el botón)
+                const textoBoton = this.innerText.toLowerCase();
+                if (textoBoton.includes("borrachito")) mostrarBorrachito("borrachito");
+                else if (textoBoton.includes("chinchilla")) mostrarBorrachito("chinchilla");
+                else if (textoBoton.includes("pingüino")) mostrarBorrachito("pingüino");
+                else if (textoBoton.includes("caracol")) mostrarBorrachito("caracol");
             }
         });
     });
 
-    // Lógica para el carrusel de información (diapositivas) dentro de cada ficha
+    // Lógica para el carrusel de información
     const panelesFicha = document.querySelectorAll('.acordeon-panel');
     
     panelesFicha.forEach(panel => {
@@ -92,13 +99,46 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
        
-        // Si el usuario baja más de 80px, la barra se contrae
         if (scrollTop > 80) {
             navbar.classList.add('contraida');
         } else {
-            // Si sube al tope, la barra vuelve a su tamaño normal
             navbar.classList.remove('contraida');
         }
     });
+
+    // ==========================================
+    // 4. LÓGICA DE BORRACHITO FLOTANTE (GUÍA)
+    // ==========================================
+    const guiaBorrachito = document.getElementById('guia-borrachito-flotante');
+    const textoGlobo = document.getElementById('texto-borrachito');
+    const btnCerrarBorrachito = document.getElementById('cerrar-borrachito');
+    let timeoutBorrachito;
+
+    // Diccionario de datos curiosos que leerá al abrir los acordeones
+    const datosCuriosos = {
+        "borrachito": "¡Ese soy yo! Me llamo así porque bebo la savia fermentada de los árboles hasta caer rendido. ¡Salud!",
+        "chinchilla": "La Chinchilla costina es súper famosa en internet como mascota, ¡pero en su hábitat natural está al borde de la extinción!",
+        "pingüino": "¡El pingüino de Humboldt tiene el megáfono mediático! Se lleva toda la atención, mientras otras especies son ignoradas.",
+        "caracol": "¡Un caracol que vive en el desierto! El Caracol de Paposo sobrevive solo tomando el agüita que deja la niebla costera. ¡Mágico!"
+    };
+
+    function mostrarBorrachito(clave) {
+        if (!guiaBorrachito || !textoGlobo) return;
+        
+        textoGlobo.innerText = datosCuriosos[clave];
+        guiaBorrachito.classList.add('asomar');
+        
+        clearTimeout(timeoutBorrachito);
+        // Se oculta automáticamente después de 10 segundos
+        timeoutBorrachito = setTimeout(() => {
+            guiaBorrachito.classList.remove('asomar');
+        }, 10000);
+    }
+
+    if (btnCerrarBorrachito) {
+        btnCerrarBorrachito.addEventListener('click', () => {
+            guiaBorrachito.classList.remove('asomar');
+        });
+    }
 
 });
