@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const textoBoton = this.innerText.toLowerCase();
                 if (textoBoton.includes("borrachito")) mostrarBorrachito("borrachito");
                 else if (textoBoton.includes("chinchilla")) mostrarBorrachito("chinchilla");
-                else if (textoBoton.includes("pingüino")) mostrarBorrachito("pingüino");
                 else if (textoBoton.includes("caracol")) mostrarBorrachito("caracol");
             }
         });
@@ -116,10 +115,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Diccionario de datos curiosos que leerá al abrir los acordeones
     const datosCuriosos = {
-        "borrachito": "¡Ese soy yo! Me llamo así porque bebo la savia fermentada de los árboles hasta caer rendido. ¡Salud!",
-        "chinchilla": "La Chinchilla costina es súper famosa en internet como mascota, ¡pero en su hábitat natural está al borde de la extinción!",
-        "pingüino": "¡El pingüino de Humboldt tiene el megáfono mediático! Se lleva toda la atención, mientras otras especies son ignoradas.",
-        "caracol": "¡Un caracol que vive en el desierto! El Caracol de Paposo sobrevive solo tomando el agüita que deja la niebla costera. ¡Mágico!"
+        "borrachito": "¡Jeje, ese soy yo! Te cuento un secreto: no puedo volar porque mis alas están atrofiadas. Así que ando a pie a todos lados, ¡lo que hace súper difícil colonizar nuevos territorios!",
+        "chinchilla": "¡Qué envidia le tengo a su abrigo! La chinchilla costina tiene el pelaje más denso de los mamíferos terrestres. ¡De un solo folículo le brotan entre 50 y 80 pelitos! Perfecto para no congelarse en las rocas.",
+        "caracol": "¡Este amiguito es una verdadera especie reliquia del pasado! Vive en quebradas armando su propio micro-ecosistema con la agüita dulce que saca de la camanchaca. ¡Un sobreviviente aislado por miles de años en pleno desierto!"
     };
 
     function mostrarBorrachito(clave) {

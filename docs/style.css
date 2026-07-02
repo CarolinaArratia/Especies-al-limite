@@ -630,7 +630,8 @@ body.bloqueo-scroll {
 .info-especie h3 {
     color: var(--recuadros);
     margin: 0 0 8px 0; 
-    font-size: 1.5rem; 
+    font-size: 1.25rem; /* Reducido de 1.5rem para que quepan los nombres largos */
+    line-height: 1.2; /* Interlineado más ajustado para que las líneas no ocupen tanto alto */
     text-align: left;
     font-family: var(--fuente-titulos);
 }
