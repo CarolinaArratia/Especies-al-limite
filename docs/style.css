@@ -89,7 +89,7 @@ body {
 }
 
 /* =========================================
-   LAYOUT CENTRADO
+   LAYOUT CENTRADO Y DIVISOR
 ========================================= */
 .contenedor-central {
     max-width: 850px; 
@@ -103,6 +103,21 @@ body {
 .cronica-seccion {
     width: 100%;
     margin-bottom: 60px;
+}
+
+.divisor-seccion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 110px 0 0px 0; /* 110px arriba (más aire), 5px abajo (bien pegadito al título) */
+}
+
+.divisor-seccion img {
+    width: 100%;
+    max-width: 1000px; /* Más ancho, ahora abarca todo el contenedor central */
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9; 
 }
 
 /* =========================================
@@ -191,7 +206,7 @@ a:hover {
 }
 
 /* =========================================
-   GRÁFICOS
+   GRÁFICOS (VEGA LITE)
 ========================================= */
 .grafico-container {
     background-color: var(--recuadros);
@@ -220,10 +235,35 @@ a:hover {
     margin-bottom: 0;
 }
 
-/* =========================================
-   FICHAS EN ACORDEÓN CON SLIDER (ESTILO CENTRADO)
-========================================= */
+.vega-embed-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--recuadros);
+    padding: 20px;
+    border-radius: 12px;
+    border-bottom: 5px solid var(--datos-verde);
+    box-sizing: border-box;
+    overflow: hidden;
+}
 
+.vega-embed-container > div {
+    width: 100%;
+}
+
+.vega-embed {
+    width: 100% !important;
+    max-width: 100%;
+}
+
+.vega-embed details,
+.vega-embed details summary {
+    position: relative;
+}
+
+/* =========================================
+   FICHAS EN ACORDEÓN CON SLIDER
+========================================= */
 .bloque-interactivo {
     display: flex;
     flex-direction: column; 
@@ -630,8 +670,8 @@ body.bloqueo-scroll {
 .info-especie h3 {
     color: var(--recuadros);
     margin: 0 0 8px 0; 
-    font-size: 1.25rem; /* Reducido de 1.5rem para que quepan los nombres largos */
-    line-height: 1.2; /* Interlineado más ajustado para que las líneas no ocupen tanto alto */
+    font-size: 1.25rem; 
+    line-height: 1.2;
     text-align: left;
     font-family: var(--fuente-titulos);
 }
