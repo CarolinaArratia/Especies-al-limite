@@ -109,12 +109,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 110px 0 0px 0; /* 110px arriba (más aire), 5px abajo (bien pegadito al título) */
+    margin: 110px 0 0px 0; 
 }
 
 .divisor-seccion img {
     width: 100%;
-    max-width: 1000px; /* Más ancho, ahora abarca todo el contenedor central */
+    max-width: 1000px; 
     height: auto;
     object-fit: contain;
     opacity: 0.9; 
@@ -221,7 +221,6 @@ a:hover {
 .grafico-container img {
     width: 100%;
     height: auto;
-    border-bottom: 5px solid var(--datos-verde);
     border-radius: 4px;
     display: block;
 }
@@ -239,12 +238,13 @@ a:hover {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--recuadros);
+    background-color: transparent; 
     padding: 20px;
     border-radius: 12px;
-    border-bottom: 5px solid var(--datos-verde);
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible; /* Permite que el menú salga del contenedor */
+    position: relative;
+    z-index: 10;
 }
 
 .vega-embed-container > div {
@@ -258,7 +258,12 @@ a:hover {
 
 .vega-embed details,
 .vega-embed details summary {
-    position: relative;
+    z-index: 50; /* Botón de 3 puntos sobre el gráfico */
+}
+
+/* Menú de acciones (descarga) de Vega */
+.vega-actions {
+    z-index: 1000 !important; /* Obliga al menú a estar por encima de toda la web */
 }
 
 /* =========================================
@@ -457,7 +462,7 @@ body.bloqueo-scroll {
 }
 
 .contenido-inicio {
-    background-color: rgba(251, 248, 240, 0.781);
+    background-color: rgba(251, 248, 240, 0.9);
     padding: 50px 40px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
