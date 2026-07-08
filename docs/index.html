@@ -446,114 +446,20 @@
                     <div id="vis-carolina"></div>
                     <script>
                       (function(vegaEmbed) {
-                        var spec = {
-                          "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
-                          "background": "#FBF8F0",
-                          "config": {
-                            "view": {"continuousWidth": 300, "continuousHeight": 300}
-                          },
-                          "title": {
-                            "text": "LA ASFIXIA DEL ESPACIO MEDIÁTICO",
-                            "subtitle": ["Mientras algunas especies brillan en su protagonismo, otras son invisibles para los medios."],
-                            "color": "#91532B",
-                            "fontSize": 22,
-                            "subtitleColor": "#1F3D5B"
-                          },
-                          "data": {"name": "dataset3"},
-                          "layer": [
-                            {
-                              "mark": {"type": "rect", "stroke": "white", "strokeWidth": 1},
-                              "encoding": {
-                                "x": {"field": "x0", "type": "quantitative", "title": "Distribución del Espacio Mediático", "axis": {"format": "%"}},
-                                "x2": {"field": "x1"},
-                                "y": {"value": 50},
-                                "y2": {"value": 350},
-                                "color": {
-                                  "field": "RCE",
-                                  "type": "nominal",
-                                  "title": "Categoría de Riesgo",
-                                  "scale": {"domain": ["CR", "EN"], "range": ["#86223E", "#91532B"]}
-                                },
-                                "tooltip": [
-                                  {"field": "Nombre común", "type": "nominal", "title": "Nombre Común"},
-                                  {"field": "Nombre científico", "type": "nominal", "title": "Nombre Científico"},
-                                  {"field": "RCE", "type": "nominal", "title": "Estado de Conservación"},
-                                  {"field": "Ficha técnica", "type": "nominal", "title": "Ficha Técnica Descriptiva"}
-                                ]
-                              }
-                            },
-                            {
-                              "mark": {"type": "text", "align": "center", "angle": 270, "baseline": "middle", "color": "white", "fontSize": 12, "fontWeight": "bold"},
-                              "encoding": {
-                                "x": {"field": "xmid", "type": "quantitative"},
-                                "y": {"value": 200},
-                                "text": {"field": "etiqueta_grafico", "type": "nominal"}
-                              }
-                            }
-                          ],
-                          "width": "container",
-                          "height": 400,
-                          "datasets": {
-                            "dataset3": [
-                              {
-                                "Nombre científico": "Spheniscus humboldti", "Nombre común": "Pingüino de Humboldt", "RCE": "EN",
-                                "x0": 0.0, "x1": 0.5277777777777778, "xmid": 0.2638888888888889,
-                                "etiqueta_grafico": "Pingüino de Humboldt",
-                                "Ficha técnica": "Vive en costas e islas del norte y centro de Chile. En Peligro (EN), nidifica en cavidades de guano y se ve afectado por la sobrepesca y el cambio climático."
-                              },
-                              {
-                                "Nombre científico": "Rhinoderma darwinii", "Nombre común": "Ranita de Darwin", "RCE": "EN",
-                                "x0": 0.5277777777777778, "x1": 0.6944444444444444, "xmid": 0.6111111111111112,
-                                "etiqueta_grafico": "Ranita de Darwin",
-                                "Ficha técnica": "Habita bosques templados del sur. En estado En Peligro (EN), destaca porque el macho incuba los renacuajos en su saco vocal. Sus poblaciones declinan por el hongo quítrido y la deforestación."
-                              },
-                              {
-                                "Nombre científico": "Rhinoderma rufum", "Nombre común": "Ranita de Darwin del Norte", "RCE": "CR",
-                                "x0": 0.6944444444444444, "x1": 0.7847222222222222, "xmid": 0.7395833333333333,
-                                "etiqueta_grafico": "Ranita de Darwin del Norte",
-                                "Ficha técnica": "Habitaba la zona central (Maule a Biobío). En Peligro Crítico (CR) y probablemente extinta, su desaparición se vincula a la pérdida de bosque nativo y la propagación de enfermedades fúngicas."
-                              },
-                              {
-                                "Nombre científico": "Pristidactylus alvaroi", "Nombre común": "Lagarto gruñidor de Álvaro", "RCE": "CR",
-                                "x0": 0.7847222222222222, "x1": 0.8472222222222222, "xmid": 0.8159722222222222,
-                                "etiqueta_grafico": "Lagarto gruñidor de Álvaro",
-                                "Ficha técnica": "Endémico de la Cordillera de la Costa central. En Peligro Crítico (CR), emite sonidos al ser amenazado. Su hábitat en cumbres boscosas como el Cerro El Roble es vulnerable a incendios."
-                              },
-                              {
-                                "Nombre científico": "Eulidia yarrellii", "Nombre común": "Picaflor de Arica", "RCE": "CR",
-                                "x0": 0.8472222222222222, "x1": 0.9027777777777778, "xmid": 0.875,
-                                "etiqueta_grafico": "Picaflor de Arica",
-                                "Ficha técnica": "Habita valles de la Región de Arica. En Peligro Crítico (CR), es el ave más pequeña del país. Su extinción es inminente debido al uso de pesticidas y pérdida de vegetación."
-                              },
-                              {
-                                "Nombre científico": "Hippocamelus bisulcus", "Nombre común": "Huemul", "RCE": "EN",
-                                "x0": 0.9027777777777778, "x1": 0.9583333333333334, "xmid": 0.9305555555555556,
-                                "etiqueta_grafico": "Huemul",
-                                "Ficha técnica": "Reside en los bosques andino-patagónicos. En estado En Peligro (EN), este ciervo emblemático es Monumento Natural y enfrenta amenazas como ataques de perros, enfermedades ganaderas y fragmentación de hábitat."
-                              },
-                              {
-                                "Nombre científico": "Chilina angusta", "Nombre común": "Caracol de Paposo", "RCE": "CR",
-                                "x0": 0.9583333333333334, "x1": 0.9861111111111112, "xmid": 0.9722222222222223,
-                                "etiqueta_grafico": "Caracol de Paposo",
-                                "Ficha técnica": "Habita exclusivamente en los oasis de niebla de Antofagasta. Clasificado en Peligro Crítico (CR), este molusco depende de la humedad de las nubes y su suffer por la sequía extrema."
-                              },
-                              {
-                                "Nombre científico": "Sclerostomulus nitidus", "Nombre común": "Borrachito", "RCE": "CR",
-                                "x0": 0.9861111111111112, "x1": 0.9930555555555556, "xmid": 0.9895833333333334,
-                                "etiqueta_grafico": "",
-                                "Ficha técnica": "Pequeña ave de valles del norte grande. En Peligro (EN), es un insectívoro esencial para su ecosistema, aunque la degradación de los valles desérticos amenaza su equilibrio local."
-                              },
-                              {
-                                "Nombre científico": "Sephanoides fernandensis", "Nombre común": "Picaflor de Juan Fernández", "RCE": "CR",
-                                "x0": 0.9930555555555556, "x1": 1.0, "xmid": 0.9965277777777778,
-                                "etiqueta_grafico": "",
-                                "Ficha técnica": "Exclusivo de la Isla Robinson Crusoe. En Peligro Crítico (CR), destaca por su plumaje rojizo único. Es amenazado severamente por gatos, coatíes y la invasión de plantas exóticas en su hábitat."
-                              }
-                            ]
-                          }
-                        };
+                        var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "background": "#FBF8F0"}, "layer": [{"mark": {"type": "rect", "stroke": "white", "strokeWidth": 1}, "encoding": {"color": {"field": "RCE", "scale": {"domain": ["CR", "EN"], "range": ["#86223E", "#91532B"]}, "title": "Categoría de Riesgo", "type": "nominal"}, "tooltip": [{"field": "Nombre común", "title": "Nombre Común", "type": "nominal"}, {"field": "Nombre científico", "title": "Nombre Científico", "type": "nominal"}, {"field": "RCE", "title": "Estado de Conservación", "type": "nominal"}], "x": {"axis": {"format": "%"}, "field": "x0", "title": "Distribución del Espacio Mediático", "type": "quantitative"}, "x2": {"field": "x1"}, "y": {"value": 50}, "y2": {"value": 350}}}, {"mark": {"type": "text", "align": "center", "angle": 270, "baseline": "middle", "color": "white", "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"field": "etiqueta_grafico", "type": "nominal"}, "x": {"field": "xmid", "type": "quantitative"}, "y": {"value": 200}}}], "data": {"name": "data-fcb45306997b90d7d8e14730755b9bbe"}, "height": 400, "title": {"text": "LA ASFIXIA DEL ESPACIO MEDIÁTICO", "subtitle": ["Mientras algunas especies brillan en su protagonismo, otras son invisibles para los medios."], "color": "#91532B", "fontSize": 22, "subtitleColor": "#1F3D5B"}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-fcb45306997b90d7d8e14730755b9bbe": [{"Etiquetas de fila": "216 - Spheniscus humboldti", "Apariciones": 76, "Cuenta de Tiene foto": 76, "Suma de Es protagonsita": 76, "Nombre científico": "Spheniscus humboldti", "Nombre común": "Pingüino de Humboldt", "RCE": "EN", "prop": 0.4293785310734463, "x0": 0.0, "x1": 0.4293785310734463, "xmid": 0.21468926553672316, "etiqueta_grafico": "Pingüino de Humboldt"}, {"Etiquetas de fila": "215 - Rhinoderma darwinii", "Apariciones": 24, "Cuenta de Tiene foto": 24, "Suma de Es protagonsita": 24, "Nombre científico": "Rhinoderma darwinii", "Nombre común": "Ranita de Darwin", "RCE": "EN", "prop": 0.13559322033898305, "x0": 0.42937853107344637, "x1": 0.5649717514124294, "xmid": 0.4971751412429379, "etiqueta_grafico": "Ranita de Darwin"}, {"Etiquetas de fila": "49 - Rhinoderma rufum", "Apariciones": 13, "Cuenta de Tiene foto": 13, "Suma de Es protagonsita": 4, "Nombre científico": "Rhinoderma rufum", "Nombre común": "Ranita de Darwin del norte", "RCE": "CR", "prop": 0.07344632768361582, "x0": 0.5649717514124294, "x1": 0.6384180790960452, "xmid": 0.6016949152542372, "etiqueta_grafico": "Ranita de Darwin del norte"}, {"Etiquetas de fila": "45 - Pristidactylus alvaroi", "Apariciones": 9, "Cuenta de Tiene foto": 8, "Suma de Es protagonsita": 7, "Nombre científico": "Pristidactylus alvaroi", "Nombre común": "Gruñidor de Álvaro", "RCE": "EN", "prop": 0.05084745762711865, "x0": 0.6384180790960452, "x1": 0.6892655367231638, "xmid": 0.6638418079096045, "etiqueta_grafico": "Gruñidor de Álvaro"}, {"Etiquetas de fila": "214 - Hippocamelus bisulcus", "Apariciones": 8, "Cuenta de Tiene foto": 8, "Suma de Es protagonsita": 5, "Nombre científico": "Hippocamelus bisulcus", "Nombre común": "Huemul", "RCE": "EN", "prop": 0.04519774011299435, "x0": 0.6892655367231638, "x1": 0.7344632768361582, "xmid": 0.711864406779661, "etiqueta_grafico": "Huemul"}, {"Etiquetas de fila": "25 - Eulidia yarrellii", "Apariciones": 8, "Cuenta de Tiene foto": 8, "Suma de Es protagonsita": 8, "Nombre científico": "Eulidia yarrellii", "Nombre común": "Picaflor de Arica", "RCE": "CR", "prop": 0.04519774011299435, "x0": 0.7344632768361582, "x1": 0.7796610169491526, "xmid": 0.7570621468926554, "etiqueta_grafico": "Picaflor de Arica"}, {"Etiquetas de fila": "167 - Lycalopex fulvipes", "Apariciones": 8, "Cuenta de Tiene foto": 8, "Suma de Es protagonsita": 8, "Nombre científico": "Lycalopex fulvipes", "Nombre común": "Zorro chilote", "RCE": "EN", "prop": 0.04519774011299435, "x0": 0.7796610169491526, "x1": 0.824858757062147, "xmid": 0.8022598870056498, "etiqueta_grafico": "Zorro chilote"}, {"Etiquetas de fila": "119 - Diplomystes chilensis", "Apariciones": 5, "Cuenta de Tiene foto": 5, "Suma de Es protagonsita": 4, "Nombre científico": "Diplomystes chilensis", "Nombre común": "Tollo de agua dulce", "RCE": "EN", "prop": 0.02824858757062147, "x0": 0.824858757062147, "x1": 0.8531073446327684, "xmid": 0.8389830508474576, "etiqueta_grafico": "Tollo de agua dulce"}, {"Etiquetas de fila": "207 - Trichomycterus chiltoni", "Apariciones": 5, "Cuenta de Tiene foto": 5, "Suma de Es protagonsita": 4, "Nombre científico": "Trichomycterus chiltoni", "Nombre común": "Bagrecito", "RCE": "EN", "prop": 0.02824858757062147, "x0": 0.8531073446327684, "x1": 0.8813559322033898, "xmid": 0.8672316384180792, "etiqueta_grafico": "Bagrecito"}, {"Etiquetas de fila": "17 - Chilina angusta", "Apariciones": 4, "Cuenta de Tiene foto": 3, "Suma de Es protagonsita": 1, "Nombre científico": "Chilina angusta", "Nombre común": "Caracol de agua dulce", "RCE": "EN", "prop": 0.022598870056497175, "x0": 0.8813559322033898, "x1": 0.903954802259887, "xmid": 0.8926553672316384, "etiqueta_grafico": "Caracol de agua dulce"}, {"Etiquetas de fila": "191 - Pristidactylus valeriae", "Apariciones": 3, "Cuenta de Tiene foto": 3, "Suma de Es protagonsita": 2, "Nombre científico": "Pristidactylus valeriae", "Nombre común": "Gruñidor de Valeria", "RCE": "EN", "prop": 0.01694915254237288, "x0": 0.903954802259887, "x1": 0.9209039548022598, "xmid": 0.9124293785310734, "etiqueta_grafico": ""}, {"Etiquetas de fila": "110 - Cheirodon kiliani", "Apariciones": 3, "Cuenta de Tiene foto": 3, "Suma de Es protagonsita": 2, "Nombre científico": "Cheirodon kiliani", "Nombre común": "Pocha de Valdivia", "RCE": "EN", "prop": 0.01694915254237288, "x0": 0.9209039548022598, "x1": 0.9378531073446327, "xmid": 0.9293785310734463, "etiqueta_grafico": ""}, {"Etiquetas de fila": "145 - Gyriosomus angustus", "Apariciones": 2, "Cuenta de Tiene foto": 2, "Suma de Es protagonsita": 2, "Nombre científico": "Gyriosomus angustus", "Nombre común": "Vaquita del desierto", "RCE": "EN", "prop": 0.011299435028248588, "x0": 0.9378531073446327, "x1": 0.9491525423728813, "xmid": 0.9435028248587569, "etiqueta_grafico": ""}, {"Etiquetas de fila": "80 - Alsodes cantillanensis", "Apariciones": 2, "Cuenta de Tiene foto": 2, "Suma de Es protagonsita": 0, "Nombre científico": "Alsodes cantillanensis", "Nombre común": "Sapo de Cantillana", "RCE": "CR", "prop": 0.011299435028248588, "x0": 0.9491525423728813, "x1": 0.9604519774011299, "xmid": 0.9548022598870056, "etiqueta_grafico": ""}, {"Etiquetas de fila": "100 - Ardenna creatopus", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 1, "Nombre científico": "Ardenna creatopus", "Nombre común": "Fardela blanca", "RCE": "EN", "prop": 0.005649717514124294, "x0": 0.9604519774011299, "x1": 0.9661016949152541, "xmid": 0.963276836158192, "etiqueta_grafico": ""}, {"Etiquetas de fila": "150 - Lasia pulla", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 1, "Nombre científico": "Lasia pulla", "Nombre común": "Mosquita colibrí", "RCE": "EN", "prop": 0.005649717514124294, "x0": 0.9661016949152541, "x1": 0.9717514124293783, "xmid": 0.9689265536723162, "etiqueta_grafico": ""}, {"Etiquetas de fila": "205 - Telmatobufo venustus", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 1, "Nombre científico": "Telmatobufo venustus", "Nombre común": "Sapo hermoso", "RCE": "EN", "prop": 0.005649717514124294, "x0": 0.9717514124293783, "x1": 0.9774011299435026, "xmid": 0.9745762711864405, "etiqueta_grafico": ""}, {"Etiquetas de fila": "213 - Virilastacus rucapihuelensis", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 1, "Nombre científico": "Virilastacus rucapihuelensis", "Nombre común": "Camarón de Rucapihuel", "RCE": "CR", "prop": 0.005649717514124294, "x0": 0.9774011299435026, "x1": 0.9830508474576268, "xmid": 0.9802259887005647, "etiqueta_grafico": ""}, {"Etiquetas de fila": "50 - Sclerostomulus nitidus", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 0, "Nombre científico": "Sclerostomulus nitidus", "Nombre común": "Escarabajo nativo", "RCE": "EN", "prop": 0.005649717514124294, "x0": 0.9830508474576268, "x1": 0.9887005649717511, "xmid": 0.985875706214689, "etiqueta_grafico": ""}, {"Etiquetas de fila": "51 - Sephanoides fernandensis", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 0, "Nombre científico": "Sephanoides fernandensis", "Nombre común": "Picaflor de Juan Fernández", "RCE": "CR", "prop": 0.005649717514124294, "x0": 0.9887005649717511, "x1": 0.9943502824858753, "xmid": 0.9915254237288131, "etiqueta_grafico": ""}, {"Etiquetas de fila": "82 - Alsodes tumultuosus", "Apariciones": 1, "Cuenta de Tiene foto": 1, "Suma de Es protagonsita": 1, "Nombre científico": "Alsodes tumultuosus", "Nombre común": "Sapo de pecho espinoso", "RCE": "EN", "prop": 0.005649717514124294, "x0": 0.9943502824858753, "x1": 0.9999999999999996, "xmid": 0.9971751412429375, "etiqueta_grafico": ""}]}};
                         var embedOpt = {"mode": "vega-lite"};
-                        vegaEmbed("#vis-carolina", spec, embedOpt).catch(console.error);
+
+                        function showError(el, error){
+                            el.innerHTML = ('<div style="color:red;">'
+                                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                                            + "<p>This usually means there's a typo in your chart specification. "
+                                            + "See the javascript console for the full traceback.</p>"
+                                            + '</div>');
+                            throw error;
+                        }
+                        const el = document.getElementById('vis-carolina');
+                        vegaEmbed("#vis-carolina", spec, embedOpt)
+                          .catch(error => showError(el, error));
                       })(vegaEmbed);
                     </script>
                 </div>
