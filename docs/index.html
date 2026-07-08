@@ -17,6 +17,30 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <style>
+      /* Estilos específicos para los gráficos de Vega */
+      .vega-embed-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: transparent; 
+        padding: 20px;
+        border-radius: 12px;
+        box-sizing: border-box;
+        overflow: visible; /* Permite que el menú salga del contenedor */
+        position: relative;
+        z-index: 10; /* Mantiene el gráfico por delante del fondo */
+      }
+      .vega-embed details,
+      .vega-embed details summary {
+        position: relative;
+        z-index: 50; /* Botón de 3 puntos sobre el gráfico */
+      }
+      /* Menú de acciones (descarga) de Vega */
+      .vega-actions {
+        z-index: 1000 !important; /* Obliga al menú a estar por encima de toda la web */
+      }
+    </style>
 </head>
 <body class="bloqueo-scroll"> 
 
@@ -55,14 +79,13 @@
                 <p>Antes de continuar, es importante detenerse en cómo se clasifican estos niveles de riesgo. A continuación, se presenta una guía que permite comprender qué significa cada categoría.</p>
                 
                 <div style="text-align: center; margin: 40px 0;">
-                    <img src="categorias.jpeg" alt="Categorías de vulneración" style="max-width: 100%; border-radius: 8px; border: 2px solid var(--interfaz);">
+                    <img src="categorias.jpeg" alt="Categorías de vulneración" style="max-width: 100%; border-radius: 8px;">
                 </div>
 
                 <p>Aunque son muchas más las especies que habitan en nuestro país y que efectivamente se encuentran dentro de estas categorías, aquí se abordan únicamente aquellas que son endémicas; es decir, que no se encuentran en ningún otro lugar del mundo que no sea el territorio nacional. Así, por ejemplo, si una especie habita en la Patagonia —zona compartida entre Chile y Argentina—, deja de ser endémica y, por lo tanto, no forma parte de esta selección.</p>
                 
                 <p>Ahora te dejamos con Borrachito, quien te llevará por un <strong><em>recorrido entre especies olvidadas, únicas y en riesgo.</em></strong></p>
 
-                <!-- PRESENTACIÓN OFICIAL DE BORRACHITO -->
                 <div class="presentacion-borrachito animar-seccion">
                     <div class="globo-texto-inline">
                         <p>¡Por fin me toca hablar! Soy Borrachito, tu guía en este viaje. Pasa a leer las historias de mis vecinos y haz click en las fichas para que te cuente algunos secretos.</p>
@@ -75,7 +98,6 @@
 
         <section class="cronica-seccion animar-seccion">
             <div class="ancho-texto">
-                <!-- DIVISOR 1 -->
                 <div class="divisor-seccion animar-seccion">
                     <img src="divisor.png" alt="Divisor decorativo de especies">
                 </div>
@@ -227,7 +249,6 @@
 
         <section class="cronica-seccion animar-seccion">
             <div class="ancho-texto">
-                <!-- DIVISOR 2 -->
                 <div class="divisor-seccion animar-seccion">
                     <img src="divisor.png" alt="Divisor decorativo de especies">
                 </div>
@@ -321,7 +342,6 @@
                 </div>
             </div>
 
-            <!-- FICHA RESTAURADA DE LA CHINCHILLA -->
             <div class="bloque-interactivo">
                 <div class="texto-izquierdo">
                     <p>Cada especie amenazada posee una historia propia, una forma particular de habitar el territorio y una posición específica dentro del engranaje de la vida. Sin embargo, no todas ocupan el mismo lugar dentro de la memoria colectiva. Algunas logran convertirse en emblemas reconocibles o fetiches de la cultura digital; otras desaparecen silenciosamente, asfixiadas por el desinterés, incluso antes de que la mayoría aprenda sus nombres.</p>
@@ -358,7 +378,6 @@
 
         <section class="cronica-seccion animar-seccion">
             <div class="ancho-texto">
-                <!-- DIVISOR 3 -->
                 <div class="divisor-seccion animar-seccion">
                     <img src="divisor.png" alt="Divisor decorativo de especies">
                 </div>
@@ -462,7 +481,7 @@
                                 "Nombre científico": "Chilina angusta", "Nombre común": "Caracol de Paposo", "RCE": "CR",
                                 "x0": 0.9583333333333334, "x1": 0.9861111111111112, "xmid": 0.9722222222222223,
                                 "etiqueta_grafico": "Caracol de Paposo",
-                                "Ficha técnica": "Habita exclusivamente en los oasis de niebla de Antofagasta. Clasificado en Peligro Crítico (CR), este molusco depende de la humedad de las nubes y sufre por la sequía extrema."
+                                "Ficha técnica": "Habita exclusivamente en los oasis de niebla de Antofagasta. Clasificado en Peligro Crítico (CR), este molusco depende de la humedad de las nubes y su suffer por la sequía extrema."
                               },
                               {
                                 "Nombre científico": "Sclerostomulus nitidus", "Nombre común": "Borrachito", "RCE": "CR",
@@ -496,7 +515,6 @@
                 </div>
             </div>
 
-            <!-- FICHA ARREGLADA DEL CARACOL -->
             <div class="bloque-interactivo">
                 <div class="ficha-derecha">
                     <button class="acordeon-btn">Conoce más sobre el Caracol de Paposo <span class="icono-acordeon">+</span></button>
@@ -532,10 +550,9 @@
     
     <footer class="ancho-texto" style="margin: 0 auto;">
         <p>Reportaje de Periodismo de Datos y Visualización | Proyecto: Especies al Límite</p>
-        <p>Datos extraídos a través de la herramienta <a href="https://pageviews.wmcloud.org/" target="_blank">Wikipedia Pageviews Analysis</a> y Registros Oficiales del MMA[cite: 12].</p>
+        <p>Datos extraídos a través de la herramienta <a href="https://pageviews.wmcloud.org/" target="_blank">Wikipedia Pageviews Analysis</a> y Registros Oficiales del MMA.</p>
     </footer>
 
-    <!-- GUÍA BORRACHITO INTERACTIVO (FLOTANTE) -->
     <div id="guia-borrachito-flotante">
         <div class="globo-texto" id="globo-texto-borrachito">
             <span class="cerrar-globo" id="cerrar-borrachito">&times;</span>
